@@ -5,13 +5,25 @@ import { GameSetup } from "../GameSetup";
 const JokerGameController = () => {
   const {
     state: { num_players },
+    dispatch,
   } = useGameState();
 
+  const handleQuitGame = () => {
+    localStorage.removeItem("players_info");
+    localStorage.removeItem("num_players");
+
+    dispatch({
+      type: "SET_NUM_PLAYERS",
+      payload: null,
+    });
+  };
+
+  // if there are no players, setup game
   if (!num_players) {
     return <GameSetup />;
   }
 
-  return <JokerGameView numPlayers={num_players} />;
+  return <JokerGameView numPlayers={num_players} quitGame={handleQuitGame} />;
 };
 
 export { JokerGameController };

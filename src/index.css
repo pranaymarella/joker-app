@@ -39,3 +39,19 @@ select {
   cursor: pointer;
   font-weight: 600;
 }
+
+.errorMessage {
+  color: #ff0033;
+}
+
+.errorButton {
+  margin-top: 20px;
+  width: 100px;
+  padding: 10px;
+  border-radius: 6px;
+  border-width: 0px;
+  color: white;
+  background-color: #ff0033;
+  cursor: pointer;
+  font-weight: 600;
+}

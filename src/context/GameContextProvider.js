@@ -29,7 +29,7 @@ const GameContextProvider = ({ children }) => {
 const useGameState = () => {
   const context = useContext(GameContext);
   if (context === undefined) {
-    throw new Error("useCount must be used within a CountProvider");
+    throw new Error("useGameState must be used within a GameContextProvider");
   }
   return context;
 };

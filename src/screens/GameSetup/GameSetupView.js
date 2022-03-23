@@ -11,10 +11,17 @@ const GameSetupView = ({
   handleInputChange,
   handleKeyDown,
   handleSubmit,
+  error,
 }) => {
   return (
     <div className="centerContent">
       <h1>Who's playing?</h1>
+
+      {error && (
+        <p className="errorMessage">
+          Game can only be played with 4 or 5 people
+        </p>
+      )}
 
       <CreatableSelect
         components={components}
@@ -29,7 +36,10 @@ const GameSetupView = ({
         value={value}
       />
 
-      <button className="startButton" onPress={handleSubmit}>
+      <button
+        className={error ? "errorButton" : "startButton"}
+        onClick={handleSubmit}
+      >
         Start
       </button>
     </div>
