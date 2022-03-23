@@ -11,6 +11,7 @@ const JokerGameController = () => {
   const handleQuitGame = () => {
     localStorage.removeItem("players_info");
     localStorage.removeItem("num_players");
+    localStorage.removeItem("game_board");
 
     dispatch({
       type: "SET_NUM_PLAYERS",

@@ -1,6 +1,10 @@
 import { GameSetupView } from "./GameSetupView";
 import { useState } from "react";
 import { useGameState } from "../../context";
+import {
+  fourPersonBoard,
+  fivePersonBoard,
+} from "../../boardsAndScoringTemplate";
 
 const createOption = (label) => ({
   label,
@@ -46,6 +50,18 @@ const GameSetupController = () => {
     }
   };
 
+  const handleCreateGameBoard = (players) => {
+    const board = players.length === 4 ? fourPersonBoard : fivePersonBoard;
+
+    return JSON.stringify(
+      Object.fromEntries(
+        players.map((player) => {
+          return [player, board];
+        })
+      )
+    );
+  };
+
   const handleSubmit = () => {
     const { value } = state;
 
@@ -60,6 +76,7 @@ const GameSetupController = () => {
 
     localStorage.setItem("num_players", value.length);
     localStorage.setItem("players_info", players);
+    localStorage.setItem("game_board", handleCreateGameBoard(players));
 
     dispatch({
       type: "SET_NUM_PLAYERS",
